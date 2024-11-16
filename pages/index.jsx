@@ -1,6 +1,7 @@
 import Head from "next/head";
+import Home from "./home/index"
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <Head>
@@ -9,6 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className="text-center">Hello Metin</h1>
+      <Home />
     </div>
   );
 }
