@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Home from "./home/index"
+import Header from "../components/layout/Header";
 
 export default function Index() {
   return (
@@ -8,11 +9,12 @@ export default function Index() {
         <title>Create Next Appp</title>
         <meta name="description" content="html" />
         <link rel="icon" href="/favicon.ico" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-      </Head>
-      <h1 className="text-center">Hello Metin</h1>
-      <Home />
-    </div>
-  );
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          </Head>
+          <Header />
+          <Home />
+        </div>
+        );
 }
