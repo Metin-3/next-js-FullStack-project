@@ -20,9 +20,23 @@ body {
   padding: 0;
   color: var(--foreground);
   background: var(--background);
- font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-.btn-primary{
- @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all;
+.btn-primary {
+  @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all;
+}
+
+.slick-dots {
+  @apply !flex justify-start w-full;
+}
+.slick-dots{
+  @apply md:!hidden
+}
+.slick-dots .slick-active div {
+  @apply bg-primary;
+}
+
+.slick-dots div {
+  @apply !mt-8 !mx-3 lg:!mx-0;
 }
