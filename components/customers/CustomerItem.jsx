@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const CustomerItem = ({ imgSrc }) => {
     return (
-        <div className='container mt-5'>
+        <div className='mt-5 mx-4'>
             <div className="p-6 bg-secondary text-white rounded-[5px]">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod magnam necessitatibus quo quibusdam facere deleniti adipisci exercitationem asperiores, architecto blanditiis sed repudiandae et, maxime commodi impedit. Soluta nostrum nisi rem.
