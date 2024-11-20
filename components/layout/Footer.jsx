@@ -14,11 +14,11 @@ const Footer = () => {
                 <span className="inline-block ml-2">Location</span>
               </div>
               <div>
-                <i class="fa-solid fa-phone"></i>
+                <i className="fa-solid fa-phone"></i>
                 <span className="inline-block ml-2">Call +01 1234567890</span>
               </div>
               <div>
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
                 <span className="inline-block ml-2">demo@gmail.com</span>
               </div>
             </div>
@@ -34,31 +34,31 @@ const Footer = () => {
                 href=""
                 className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full "
               >
-               <i class="fa-brands fa-facebook-f"></i>
+               <i className="fa-brands fa-facebook-f"></i>
               </a>
               <a
                 href=""
                 className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
               >
-               <i class="fa-brands fa-twitter"></i>
+               <i className="fa-brands fa-twitter"></i>
               </a>
               <a
                 href=""
                 className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
               >
-                <i class="fa-brands fa-linkedin-in"></i>
+                <i className="fa-brands fa-linkedin-in"></i>
               </a>
               <a
                 href=""
                 className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
               >
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
               </a>
               <a
                 href=""
                 className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
               >
-                <i class="fa-brands fa-pinterest"></i>
+                <i className="fa-brands fa-pinterest"></i>
               </a>
             </div>
           </div>
