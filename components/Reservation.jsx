@@ -1,16 +1,16 @@
-import React from 'react'
 import Title from './ui/Title'
 import Input from './form/Input'
 import { useFormik } from 'formik'
+import { reservationSchema } from '../schema/reservation'
 
 const Reservation = () => {
 
-    const onSubmit = async (values,actions) => {
+    const onSubmit = async (values, actions) => {
         await new Promise((resolve) => setTimeout(resolve, 4000));
         actions.resetForm();
     };
 
-    const { values, handleSubmit, handleChange} = useFormik({
+    const { values, errors, touched, handleSubmit, handleChange, handleBlur } = useFormik({
         initialValues: {
             fullName: '',
             phoneNumber: '',
@@ -19,10 +19,8 @@ const Reservation = () => {
             date: '',
         },
         onSubmit,
+        validationSchema: reservationSchema,
     });
-
-    console.log(values);
-
 
     const inputs = [
         {
@@ -31,6 +29,8 @@ const Reservation = () => {
             type: "text",
             placeholder: "Your Full Name",
             value: values.fullName,
+            errorsMessage: errors.fullName,
+            touched: touched.fullName,
         },
         {
             id: 2,
@@ -38,6 +38,8 @@ const Reservation = () => {
             type: "number",
             placeholder: "Your Phone Number",
             value: values.phoneNumber,
+            errorsMessage: errors.phoneNumber,
+            touched: touched.phoneNumber,
         },
         {
             id: 3,
@@ -45,6 +47,8 @@ const Reservation = () => {
             type: "email",
             placeholder: "Your E-mail Adress",
             value: values.email,
+            errorsMessage: errors.email,
+            touched: touched.email,
         },
         {
             id: 4,
@@ -52,6 +56,8 @@ const Reservation = () => {
             type: "number",
             placeholder: "How Many Persons  ?",
             value: values.persons,
+            errorsMessage: errors.persons,
+            touched: touched.persons,
         },
         {
             id: 5,
@@ -59,6 +65,8 @@ const Reservation = () => {
             type: "datetime-local",
             placeholder: "Your E-mail Adres",
             value: values.date,
+            errorsMessage: errors.date,
+            touched: touched.date,
         },
     ]
     return (
@@ -68,7 +76,12 @@ const Reservation = () => {
                 <form className='lg:flex-1 w-full' onSubmit={handleSubmit}>
                     <div className='flex flex-col gap-y-4'>
                         {inputs.map((input) => (
-                            <Input key={input.id} {...input} onChange={handleChange} />
+                            <Input
+                                key={input.id}
+                                {...input}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
                         ))}
                     </div>
                     <button className="btn-primary mt-4" type='submit'>BOOK NOW</button>
@@ -78,7 +91,8 @@ const Reservation = () => {
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.0361190753!2d-74.30933632161008!3d40.69753995481267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2saz!4v1732046123380!5m2!1sen!2saz"
                         allowfullscreen=""
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
+                        referrerPolicy="no-referrer" 
+                        // referrerpolicy="no-referrer-when-downgrade"
                         className='w-full h-full'
                     ></iframe>
                 </div>
