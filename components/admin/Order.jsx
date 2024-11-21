@@ -4,7 +4,7 @@ import Title from '../ui/Title';
 const Order = () => {
     return (
         <div className="lg:p-8 flex-1 lg:mt-5 mt-0">
-            <Title addClass="text-[40px]">Products</Title>
+            <Title addClass="text-[40px]">Order</Title>
             <div className='overflow-x-auto w-full mt-5'>
                 <table className='w-full text-sm text-center text-gray-400 min-w-[1000px]'>
                     <thead className='text-xs text-gray-400 uppercase bg-gray-700'>
