@@ -2,6 +2,7 @@ import Password from '../../components/profile/Password'
 import Acount from '../../components/profile/Acount'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import Order from '../../components/profile/Order'
 
 const Profile = () => {
 
@@ -36,6 +37,7 @@ const Profile = () => {
       </div>
       {tabs === 0 && (<Acount />)}
       {tabs === 1 && (<Password />)}
+      {tabs === 2 && (<Order />)}
     </div>
   )
 }
