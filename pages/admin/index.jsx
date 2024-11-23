@@ -7,7 +7,6 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 import { useRouter } from 'next/router';
 
-
 const Index = () => {
 
     const { push } = useRouter()
@@ -83,6 +82,18 @@ const Index = () => {
 
 export const getServerSideProps = (ctx) => {
     const myCookiec = ctx.req?.cookies || " ";
+    if (myCookiec.token === process.env.ADMIN_TOKEN) {
+        return {
+            redirect: {
+                destination: "/admin/profile",
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: {},
+    }
 }
 
 export default Index

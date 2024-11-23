@@ -4,11 +4,28 @@ import Products from '../../components/admin/Products';
 import Order from '../../components/admin/Order';
 import Category from '../../components/admin/Category';
 import Footer from '../../components/admin/Footer';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
 
-  const [tabs, setTabs] = useState(0)
+  const [tabs, setTabs] = useState(0);
+  const { push } = useRouter();
 
+  const closeAdminAccount = async () => {
+    try {
+      if (confirm("Are you sure you want to close your Admin Account ?")) {
+        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
+        if (res.status === 200) {
+          push("/admin");
+          toast.success("Admin account closed");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className='flex px-10 py-5 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10'>
@@ -34,7 +51,7 @@ const Profile = () => {
             <i className="fa-solid fa-window-maximize"></i>
             <button className='ml-2'>Footer</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 4 && "bg-primary text-white"}`} onClick={() => setTabs(4)}>
+          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all`} onClick={closeAdminAccount}>
             <i className="fa-solid fa-right-to-bracket"></i>
             <button className='ml-2'>Exit</button>
           </li>
@@ -46,6 +63,23 @@ const Profile = () => {
       {tabs === 3 && (<Footer />)}
     </div>
   )
+}
+
+
+export const getServerSideProps = (ctx) => {
+  const myCookiec = ctx.req?.cookies || " ";
+  if (myCookiec.token !== process.env.ADMIN_TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin",
+        permanent: false,
+      }
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
 
 export default Profile
