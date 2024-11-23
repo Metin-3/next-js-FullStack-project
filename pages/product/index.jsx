@@ -1,6 +1,8 @@
 import Title from '../../components/ui/Title';
 import Image from 'next/image';
 import { useState } from 'react';
+import { addProduct } from '../../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const itemsExtra = [
     {
@@ -18,7 +20,23 @@ const itemsExtra = [
         name: "Extra 3",
         price: 3,
     },
-]
+];
+
+const foodItems = [
+    {
+        id: 1,
+        name: "Pizza 1",
+        price: 20,
+        desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores explicabo labore molestiae fugiat at sed?",
+        extraOption: [
+            {
+                id: 1,
+                name: "Extra 1",
+                price: 10,
+            },
+        ]
+    },
+];
 
 const index = () => {
 
@@ -27,6 +45,13 @@ const index = () => {
     const [size, setSize] = useState(0);
     const [extraItems, setExtraItems] = useState(itemsExtra);
     const [extras, setExtras] = useState([]);
+
+    const cart = useSelector((state) => state.cart);
+
+    const dispathc = useDispatch()
+
+    console.log(cart);
+
 
     const handleSize = (sizeIndex) => {
         const difference = prices[sizeIndex] - prices[size];
@@ -48,6 +73,11 @@ const index = () => {
             changePrice(-item.price)
             setExtras(extras.filter((extra) => extra.id !== item.id));
         }
+    };
+
+
+    const handleClick = () => {
+        dispathc(addProduct({...foodItems[0], extras, price, quantity: 1}))
     }
 
     return (
@@ -89,7 +119,7 @@ const index = () => {
                     ))}
 
                 </div>
-                <button className='btn-primary mt-6'>Add To Card</button>
+                <button className='btn-primary mt-6' onClick={handleClick}>Add To Card</button>
             </div>
         </div>
     )

@@ -6,12 +6,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-    const [isSearchModal, setIsSearchModal] = useState(false)
-    const [isMenuModal, setIsMenuModal] = useState(false)
-    const router = useRouter()
+    const [isSearchModal, setIsSearchModal] = useState(false);
+    const [isMenuModal, setIsMenuModal] = useState(false);
+    const cart = useSelector((state) => state.cart);
+    const router = useRouter();
+
+
     return (
         <div className={`h-[5.5rem] z-50 relative ${router.asPath === "/" ? "bg-transparent" : "bg-secondary"}`}>
             <div className="container mx-auto text-white flex justify-between items-center h-full">
@@ -39,7 +43,12 @@ const Header = () => {
                 </nav>
                 <div className="flex gap-x-4 items-center">
                     <Link href="/auth/login" className="hover:text-primary transition-all cursor-pointer"><FaUserAlt /></Link>
-                    <Link href="/cart" className="hover:text-primary transition-all cursor-pointer"><FaShoppingCart /></Link>
+                    <Link href="/cart" className="hover:text-primary transition-all cursor-pointer relative">
+                        <FaShoppingCart />
+                        <span className="w-5 h-5 grid place-content-center rounded-full bg-primary text-xs absolute -top-3 -right-3 text-secondary font-bold">
+                            {cart.products.length === 0 ? "0" : cart.products.length}
+                        </span>
+                    </Link>
                     <button onClick={() => setIsSearchModal(true)} className="cursor-pointer"><FaSearch />
                     </button>
                     <Link href="/" className="md:inline-block hidden">
