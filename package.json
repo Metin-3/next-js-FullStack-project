@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.7.4",
     "@reduxjs/toolkit": "^2.3.0",
     "formik": "^2.4.6",
+    "mongodb": "^6.11.0",
     "mongoose": "^8.8.2",
     "next": "15.0.3",
     "next-auth": "^4.24.10",
