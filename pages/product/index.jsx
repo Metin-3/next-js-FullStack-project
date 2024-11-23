@@ -28,7 +28,7 @@ const foodItems = [
         name: "Pizza 1",
         price: 20,
         desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores explicabo labore molestiae fugiat at sed?",
-        extraOption: [
+        extraOptions: [
             {
                 id: 1,
                 name: "Extra 1",
