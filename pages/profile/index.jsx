@@ -1,16 +1,16 @@
-import Password from '../../components/profile/Password'
-import Acount from '../../components/profile/Acount'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import Order from '../../components/profile/Order'
-import { signOut, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import Password from '../../components/profile/Password';
+import Acount from '../../components/profile/Acount';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import Order from '../../components/profile/Order';
+import { getSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
-const Profile = () => {
+const Profile = ({ session }) => {
 
   const [tabs, setTabs] = useState(0);
   const { push } = useRouter();
-  const { data: session } = useSession();
+
 
   const handleSignOut = () => {
     if (confirm("Are you sure you want to sign out ?")) {
@@ -18,12 +18,6 @@ const Profile = () => {
       push("/auth/login");
     }
   };
-
-  useEffect(() => {
-    if (!session) {
-      push("/auth/login");
-    }
-  }, [session, push]);
 
   return (
     <div className='flex px-10 py-5 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10'>
@@ -55,7 +49,26 @@ const Profile = () => {
       {tabs === 1 && (<Password />)}
       {tabs === 2 && (<Order />)}
     </div>
-  )
+  );
+};
+
+export async function getServerSideProps({ req }) {
+  const session = await getSession({ req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      }
+    }
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
 }
 
 export default Profile
