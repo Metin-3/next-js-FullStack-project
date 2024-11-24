@@ -1,13 +1,29 @@
 import Password from '../../components/profile/Password'
 import Acount from '../../components/profile/Acount'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Order from '../../components/profile/Order'
+import { signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const Profile = () => {
 
-  const [tabs, setTabs] = useState(0)
+  const [tabs, setTabs] = useState(0);
+  const { push } = useRouter();
+  const { data: session } = useSession();
 
+  const handleSignOut = () => {
+    if (confirm("Are you sure you want to sign out ?")) {
+      signOut({ redirect: false });
+      push("/auth/login");
+    }
+  };
+
+  useEffect(() => {
+    if (!session) {
+      push("/auth/login");
+    }
+  }, [session, push]);
 
   return (
     <div className='flex px-10 py-5 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10'>
@@ -29,7 +45,7 @@ const Profile = () => {
             <i className="fa-solid fa-file-invoice"></i>
             <button className='ml-2'>Orders</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 3 && "bg-primary text-white"}`} onClick={() => setTabs(3)}>
+          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all`} onClick={handleSignOut}>
             <i className="fa-solid fa-right-to-bracket"></i>
             <button className='ml-2'>Exit</button>
           </li>
