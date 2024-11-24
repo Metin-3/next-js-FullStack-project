@@ -1,23 +1,31 @@
-import Input from '../form/Input'
-import Title from '../ui/Title'
+import React from "react";
+import Input from "../../components/form/Input";
+import Title from "../../components/ui/Title";
 import { profileSchema } from '../../schema/profile';
 import { useFormik } from 'formik';
+import axios from 'axios';
+import { toast } from "react-toastify";
 
-const Acount = () => {
+const Acount = ({ user }) => {
 
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-        actions.resetForm();
+        try {
+            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`, values)
+            toast.success("Profile update successfully")
+        } catch (err) {
+            console.log(err)
+        }
     };
 
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } = useFormik({
+        enableReinitialize: true,
         initialValues: {
-            fullName: '',
-            phoneNumber: '',
-            email: '',
-            adress: '',
-            job: '',
-            bio: '',
+            fullName: user?.fullName,
+            phoneNumber: user?.phoneNumber,
+            email: user?.email,
+            adress: user?.adress,
+            job: user?.job,
+            bio: user?.bio,
         },
         onSubmit,
         validationSchema: profileSchema,
@@ -29,7 +37,7 @@ const Acount = () => {
             name: "fullName",
             type: "text",
             placeholder: "Your Full Name",
-            value: values.fullName,
+            value: values?.fullName,
             errorsMessage: errors.fullName,
             touched: touched.fullName,
         },
@@ -38,7 +46,7 @@ const Acount = () => {
             name: "phoneNumber",
             type: "number",
             placeholder: "Your Phone Number",
-            value: values.phoneNumber,
+            value: values?.phoneNumber,
             errorsMessage: errors.phoneNumber,
             touched: touched.phoneNumber,
         },
@@ -47,7 +55,7 @@ const Acount = () => {
             name: "email",
             type: "email",
             placeholder: "Your E-mail Adress",
-            value: values.email,
+            value: values?.email,
             errorsMessage: errors.email,
             touched: touched.email,
         },
@@ -56,7 +64,7 @@ const Acount = () => {
             name: "adress",
             type: "text",
             placeholder: "Your adress",
-            value: values.adress,
+            value: values?.adress,
             errorsMessage: errors.adress,
             touched: touched.adress,
         },
@@ -65,7 +73,7 @@ const Acount = () => {
             name: "job",
             type: "text",
             placeholder: "Your job",
-            value: values.job,
+            value: values?.job,
             errorsMessage: errors.job,
             touched: touched.job,
         },
@@ -74,7 +82,7 @@ const Acount = () => {
             name: "bio",
             type: "text",
             placeholder: "Your bio",
-            value: values.bio,
+            value: values?.bio,
             errorsMessage: errors.bio,
             touched: touched.bio,
         },

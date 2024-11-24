@@ -24,7 +24,6 @@ const Register = () => {
             toast.error(err.response.data.message);
             console.log(err);
         }
-        await new Promise((resolve) => setTimeout(resolve, 1000));
         actions.resetForm();
     };
 
