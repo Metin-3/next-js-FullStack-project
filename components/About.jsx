@@ -7,7 +7,7 @@ const About = () => {
         <div className='bg-secondary py-14'>
             <div className="container mx-auto flex items-center gap-20  justify-center flex-wrap-reverse">
                 <div className='relative sm:h-[600px] sm:w-[445px] w-[300px] h-[500px]'>
-                    <Image src="/images/about-img.png" alt='' layout='fill' />
+                    <Image src="/images/about-img.png" alt='' fill priority />
                 </div>
                 <div className='text-white md:w-1/2 text-center lg:text-start'>
                     <Title addClass="text-[40px]">We Are Feane</Title>

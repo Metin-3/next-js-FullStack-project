@@ -17,9 +17,10 @@ const CustomerItem = ({ imgSrc }) => {
                 <Image
                     src={imgSrc}
                     alt=""
-                    layout="fill"
+                    fill
                     objectFit="contain"
                     className="rounded-full"
+                    priority
                 />
             </div>
         </div>

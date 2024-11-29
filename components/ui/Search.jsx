@@ -16,21 +16,21 @@ const Search = ({ setIsSearchModal }) => {
                         <ul>
                             <li className="flex items-center justify-between p-1 hover:bg-primary transition-all">
                                 <div className="relative flex">
-                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" />
+                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" priority />
                                 </div>
                                 <span className="font-bold">Good Pizza</span>
                                 <span className="font-bold">20 $</span>
                             </li>
                             <li className="flex items-center justify-between p-1 hover:bg-primary transition-all">
                                 <div className="relative flex">
-                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" />
+                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" priority />
                                 </div>
                                 <span className="font-bold">Good Pizza</span>
                                 <span className="font-bold">20 $</span>
                             </li>
                             <li className="flex items-center justify-between p-1 hover:bg-primary transition-all">
                                 <div className="relative flex">
-                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" />
+                                    <Image src="/images/f1.png" width={48} height={48} alt="ui" priority />
                                 </div>
                                 <span className="font-bold">Good Pizza</span>
                                 <span className="font-bold">20 $</span>

@@ -92,7 +92,6 @@ const Reservation = () => {
                         allowFullScreen=""
                         loading="lazy"
                         referrerPolicy="no-referrer" 
-                        // referrerpolicy="no-referrer-when-downgrade"
                         className='w-full h-full'
                     ></iframe>
                 </div>

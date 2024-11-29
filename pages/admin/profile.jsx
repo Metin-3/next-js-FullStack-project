@@ -31,7 +31,7 @@ const Profile = () => {
     <div className='flex px-10 py-5 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10'>
       <div className='lg:w-80 w-100 lg:text-start text-center flex-shrink-0'>
         <div className='relative flex flex-col items-center p-10 border border-b-0'>
-          <Image src="/images/admin.png" alt='' width={100} height={100} className='rounded-full' />
+          <Image src="/images/admin.png" alt='' width={100} height={100} className='rounded-full' priority />
           <b className='text-2xl  mt-1'>Admin</b>
         </div>
         <ul className=''>

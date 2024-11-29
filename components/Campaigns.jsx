@@ -6,7 +6,13 @@ const CampaignItem = () => {
     return (
         <div className="bg-secondary flex-1 rounded-md py-5 px-[15px] flex items-center gap-x-4">
             <div className="relative sm:h-36 sm:w-36 h-36 w-36 after:[''] border-[5px] border-primary rounded-full overflow-hidden">
-                <Image className="hover:scale-105 transition-all" src="/images/o1.jpg" layout="fill" alt="" />
+                <Image
+                    className="hover:scale-105 transition-all"
+                    src="/images/o1.jpg"
+                    fill
+                    alt=""
+                    priority
+                />
             </div>
             <div className="text-white">
                 <Title addClass="text-2xl">Tasty Thursdays</Title>

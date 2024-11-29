@@ -36,19 +36,19 @@ const Order = () => {
                 </div>
                 <div className='flex justify-between w-full p-10 bg-primary mt-8'>
                     <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/paid.png" alt='' width={40} height={40} />
+                        <Image objectFit='contain' src="/images/paid.png" alt='' width={40} height={40} priority />
                         <span>Payment</span>
                     </div>
                     <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/bake.png" alt='' width={40} height={40} />
+                        <Image objectFit='contain' src="/images/bake.png" alt='' width={40} height={40} priority />
                         <span>Preparing</span>
                     </div>
                     <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/bike.png" alt='' width={40} height={40} />
+                        <Image objectFit='contain' src="/images/bike.png" alt='' width={40} height={40} priority/>
                         <span>On the way</span>
                     </div>
                     <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/delivered.png" alt='' width={40} height={40} />
+                        <Image objectFit='contain' src="/images/delivered.png" alt='' width={40} height={40} priority/>
                         <span>Delivered</span>
                     </div>
                 </div>

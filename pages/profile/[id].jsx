@@ -37,6 +37,7 @@ const Profile = ({ user }) => {
             width={100}
             height={100}
             className='rounded-full'
+            priority
           />
           <b className="text-2xl mt-1">{user.fullName}</b>
         </div>
