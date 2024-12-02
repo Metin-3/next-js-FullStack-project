@@ -12,7 +12,7 @@ const ProductSchema = new mongoose.Schema(
             require: true,
             maxlength: 300,
         },
-        desc:{
+        prices:{
             type: [Number],
             require: true,
         },
