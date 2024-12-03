@@ -1,8 +1,26 @@
 import Title from "../ui/Title";
 import OutsideClickHandler from "react-outside-click-handler";
 import { IoMdClose } from "react-icons/io";
+import { useState } from "react";
 
 const AddProduct = ({ setIsProductModal }) => {
+
+    const [file, setFile] = useState();
+    const [imageSrc, setImageSrc] = useState();
+
+
+    const handleOnChange = (changeEvent) => {
+        const reader = new FileReader();
+
+        reader.onload = function (onLoadEvent) {
+            setImageSrc(onLoadEvent.target.result);
+            setFile(changeEvent.target.files[0]);
+        };
+        reader.readAsDataURL(changeEvent.target.files[0]);
+        console.log(imageSrc);
+
+    };
+
     return (
         <div className="fixed w-screen h-screen z-50 top-0 left-0 after:content-[''] after:w-screen after:h-screen after:absolute after:top-0 after:left-0 grid place-content-center after:bg-black after:opacity-60">
             <OutsideClickHandler onOutsideClick={() => setIsProductModal(false)}>
@@ -10,8 +28,22 @@ const AddProduct = ({ setIsProductModal }) => {
                     <div className="relative z-50 md:w-[600px] w-[370px] bg-white border-2 p-10 rounded-3xl">
                         <Title addClass="text-[40px] text-center">Add a New Product</Title>
                         <div className="flex flex-col text-sm mt-6">
-                            <span className="font-semibold mb-1">Choose an image</span>
-                            <input type="file" />
+                            <label className="flex  gap-2 items-center h-20">
+                                <input
+                                    type="file"
+                                    onChange={(e) => handleOnChange(e)}
+                                    className="hidden"
+                                />
+                                <button className="btn-primary !rounded-none !bg-blue-600 pointer-events-none">
+                                    Choose an image
+                                </button>
+                                {imageSrc && (
+                                    <div>
+                                        {/* eslint-disable @next/next/no-img-element */}
+                                        <img src={imageSrc} alt="" className="w-20 h-20 rounded-full object-cover" />
+                                    </div>
+                                )}
+                            </label>
                         </div>
                         <div className="flex flex-col text-sm mt-4">
                             <span className="font-semibold mb-[2px]">Title</span>
@@ -54,7 +86,7 @@ const AddProduct = ({ setIsProductModal }) => {
                         <div className="flex justify-end">
                             <button className="btn-primary !bg-success">Create</button>
                         </div>
-                        <button className="absolute top-4 right-4" onClick={() => setIsProductModal(false)}>
+                        <button className="absolute top-8 right-4" onClick={() => setIsProductModal(false)}>
                             <IoMdClose size={25} className="transition-all" />
                         </button>
                     </div>
