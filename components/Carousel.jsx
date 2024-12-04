@@ -22,14 +22,15 @@ const Carousel = () => {
         ),
     };
     return (
-        <div className='h-screen w-full container mx-auto -top-[88px]'>
+        <div className='h-screen w-full container mx-auto -top-[88px] before:absolute before:content before:left-0 before:top-0 before:w-full before:h-[100vh] before:bg-black before:opacity-30 before:z-10'>
             <div className='absolute top-0 left-0 w-full h-full'>
                 <div className="relative h-full w-full">
-                    <Image src="/images/hero-bg.jpg" alt='' fill objectFit='cover' priority />
+                    {/* <Image src="/images/hero-bg.jpg" alt='' fill objectFit='cover' priority /> */}
+                    <Image src="/images/header3.jpg" alt='' fill objectFit='cover' priority />
                 </div>
             </div>
-            <div>
-                <Slider {...settings}>
+            <div className='relative z-20'>
+                <Slider {...settings} className='!max-h-[500px] overflow-hidden mt-24'>
                     <div>
                         <div className='mt-24 text-white flex flex-col items-start gap-y-10'>
                             <Title addClass="text-6xl">Fast Food Restaurant</Title>

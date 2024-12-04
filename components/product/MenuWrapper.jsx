@@ -1,10 +1,16 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Title from '../ui/Title'
 import MenuItem from './MenuItem'
 
-const MenuWrapper = ({ categoryList }) => {
+const MenuWrapper = ({ categoryList, productList }) => {
 
   const [active, setActive] = useState(0)
+  const [filter, setFilter] = useState([])
+
+
+  useEffect(() => {
+   setFilter(productList.filter((product) => product.category === categoryList[active].title.toLowerCase()))
+  }, [categoryList, productList, active])
 
   return (
     <div className='container mx-auto mb-16'>
@@ -20,18 +26,12 @@ const MenuWrapper = ({ categoryList }) => {
               {category.title}
             </button>
           ))}
-
-          {/* <button className='px-6 py-2 rounded-3xl bg-secondary text-white'>All</button> */}
-          {/* <button className='px-6 py-2 rounded-3xl'>Burger</button>
-          <button className='px-6 py-2 rounded-3xl'>Pizza</button>
-          <button className='px-6 py-2 rounded-3xl'>Pasta</button>
-          <button className='px-6 py-2 rounded-3xl'>Fries</button> */}
         </div>
       </div>
-      <div className='mt-8 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
+      <div className='mt-8 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 '>
+        {filter.length > 0 && filter.map((product) => (
+          <MenuItem key={product._id} product={product} />
+        ))}
       </div>
     </div>
   )
