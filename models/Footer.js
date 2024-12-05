@@ -26,7 +26,7 @@ const FooterSchema = new mongoose.Schema(
                 }
             ],
         },
-        openigHours: {
+        openingHours: {
             type: {
                 day: { type: String },
                 hour: { type: String },
