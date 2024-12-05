@@ -2,11 +2,46 @@ import Title from '../../components/ui/Title';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { reset } from '../../redux/cartSlice';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
-const Cart = () => {
+const Cart = ({ userList }) => {
 
+    const { data: session } = useSession();
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    const user = userList?.find((user) => user.email === session?.user?.email);
+    const router = useRouter();
+
+    const newOrder = {
+        customer: user?.fullName,
+        address: user?.address ? user?.address : "No address",
+        total: cart.total,
+        method: 0,
+    };
+
+    const createOrder = async () => {
+        try {
+            if (session) {
+                if (confirm("Are you sure to order ?")) {
+                    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, newOrder);
+                    if (res.status === 201) {
+                        router.push(`/order/${res.data._id}`);
+                        dispatch(reset());
+                        toast.success("Order created successfully", { autoClose: 1000, });
+                    }
+                }
+            } else {
+                toast.error("Please login first.", { autoClose: 1000, });
+            }
+        } catch (error) {
+            toast.error("Please login first.", { autoClose: 1000, });
+            console.log(error);
+        }
+    }
+
 
     return (
         <div className='min-h-[calc(100vh_-_433px)]'>
@@ -23,7 +58,7 @@ const Cart = () => {
                         </thead>
                         <tbody>
                             {cart.products.map((product) => (
-                                <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={product.id}>
+                                <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={product._id}>
                                     <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
                                         <Image src="/images/f1.png" width={50} height={50} alt='' priority />
                                         <span>{product.name}</span>
@@ -54,12 +89,22 @@ const Cart = () => {
                         <span><b>Total:</b>{cart.total}$</span>
                     </div>
                     <div>
-                        <button className="btn-primary mt-4 md:w-auto w-52" onClick={() => dispatch(reset())}>CHECKOUT NOW !</button>
+                        <button className="btn-primary mt-4 md:w-auto w-52" onClick={createOrder}>CHECKOUT NOW !</button>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+};
 
-export default Cart
+export const getServerSideProps = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+
+    return {
+        props: {
+            userList: res.data ? res.data : [],
+        },
+    };
+};
+
+export default Cart;

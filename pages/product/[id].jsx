@@ -79,7 +79,7 @@ const index = ({ food }) => {
                 </div>
                 <div className='flex gap-x-6 my-6'>
                     {extraItems.map((item) => (
-                        <label className='flex items-center gap-x-1' key={item.id}>
+                        <label className='flex items-center gap-x-1' key={item._id}>
                             <input type="checkbox" className='w-5 h-5 accent-primary' onChange={(e) => handleChange(e, item)} />
                             <span className='text-sm font-semibold'>{item.text}</span>
                         </label>

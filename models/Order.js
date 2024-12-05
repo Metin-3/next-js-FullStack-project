@@ -18,7 +18,6 @@ const OrderSchema = new mongoose.Schema(
         },
         status: {
             type: Number,
-            require: true,
         },
         method: {
             type: Number,
