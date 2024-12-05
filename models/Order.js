@@ -7,17 +7,18 @@ const OrderSchema = new mongoose.Schema(
             require: true,
             maxlength: 100,
         },
-        address:{
+        address: {
             type: String,
             require: true,
             maxlength: 200,
         },
-        total:{
+        total: {
             type: Number,
             require: true,
         },
         status: {
             type: Number,
+            default: 0,
         },
         method: {
             type: Number,

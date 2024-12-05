@@ -57,10 +57,10 @@ const Cart = ({ userList }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cart.products.map((product) => (
-                                <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={product._id}>
+                            {cart.products.map((product, index) => (
+                                <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={index}>
                                     <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
-                                        <Image src="/images/f1.png" width={50} height={50} alt='' priority />
+                                        <Image src={product?.img} width={50} height={50} alt='' priority />
                                         <span>{product.name}</span>
                                     </td>
                                     <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
