@@ -12,7 +12,7 @@ const Products = () => {
         try {
             if (confirm("Are you sure you want to delete this product ?")) {
                 const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`);
-                
+
                 if (res.status === 200) {
                     toast.success("Product Deleted !");
                     getProducts();
@@ -42,7 +42,7 @@ const Products = () => {
     return (
         <div className="lg:p-8 flex-1 lg:mt-5 mt-0">
             <Title addClass="text-[40px]">Products</Title>
-            <div className='overflow-x-auto w-full mt-5'>
+            <div className='overflow-x-auto w-full mt-5 !max-h-[400px] overflow-auto'>
                 <table className='w-full text-sm text-center text-gray-400 min-w-[1000px]'>
                     <thead className='text-xs text-gray-400 uppercase bg-gray-700'>
                         <tr>

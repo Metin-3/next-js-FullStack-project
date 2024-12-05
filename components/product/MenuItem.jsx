@@ -7,7 +7,7 @@ const MenuItem = ({ product }) => {
     return (
         <div className='bg-secondary rounded-3xl'>
             <div className='w-full bg-[#f1f2f3] h-[210px] grid place-content-center rounded-bl-[46px] rounded-tl-2xl rounded-tr-2xl'>
-                <Link href="/product">
+                <Link href={`/product/${product._id}`}>
                     <div className='relative w-40 h-40 hover:scale-110 transition-all'>
                         <Image src={product.img} alt='' fill priority />
                     </div>

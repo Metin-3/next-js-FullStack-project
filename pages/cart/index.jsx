@@ -31,7 +31,7 @@ const Cart = () => {
                                     <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
                                         {product.extras.map((extra) => (
                                             <span key={extra.id}>
-                                                {extra.name}
+                                                {extra.text}
                                             </span>
                                         ))}
                                     </td>
