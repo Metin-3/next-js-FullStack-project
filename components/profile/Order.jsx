@@ -1,7 +1,40 @@
-import React from 'react'
-import Title from '../ui/Title'
+import { useEffect, useState } from 'react';
+import Title from '../ui/Title';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 
 const Order = () => {
+
+    const [orders, setOrders] = useState([]);
+    const [currentUser, setCurrentUser] = useState([]);
+    const { data: session } = useSession();
+    // const status = ["preparing", "on the way", "delivered"];
+
+    useEffect(() => {
+        const getOrders = async () => {
+            try {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/orders`);
+                setOrders(res.data.filter((order) => order.customer === currentUser?.fullName));
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getOrders();
+    }, [currentUser]);
+
+    
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+                setCurrentUser(res.data.filter((user) => user.email === session.user.email)[0]);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUsers();
+    }, [session]);
+
     return (
         <div className='lg:p-8 flex-1 lg:mt-0 mt-5'>
             <Title addClass="text-[40px] lg:text-start text-center">Orders</Title>
@@ -17,23 +50,25 @@ const Order = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all'>
-                            <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
-                                76876
-                            </td>
-                            <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
-                                adress
-                            </td>
-                            <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
-                                01-10-2022
-                            </td>
-                            <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
-                                67 $
-                            </td>
-                            <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
-                                preparing
-                            </td>
-                        </tr>
+                        {orders.map((order) => (
+                            <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={order?._id}>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
+                                    76876
+                                </td>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    adress
+                                </td>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    01-10-2022
+                                </td>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    67 $
+                                </td>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    preparing
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

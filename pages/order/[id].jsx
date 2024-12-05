@@ -1,10 +1,17 @@
 import axios from 'axios';
-import Image from 'next/image'
+import Image from 'next/image';
 
 
-const Order = ({order}) => {
+const Order = ({ order }) => {
 
-    
+    const status = order?.status;
+
+    const statusClass = (index) => {
+        if (index - status < 1) return "";
+        if (index - status === 1) return "animate-pulse";
+        if (index - status > 1) return "";
+    };
+
     return (
 
         <div className='overflow-x-auto'>
@@ -22,7 +29,7 @@ const Order = ({order}) => {
                         <tbody>
                             <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all'>
                                 <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
-                                   {order?._id.substring(0, 10)}...
+                                    {order?._id.substring(0, 10)}...
                                 </td>
                                 <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
                                     {order?.customer}
@@ -38,20 +45,20 @@ const Order = ({order}) => {
                     </table>
                 </div>
                 <div className='flex justify-between w-full p-10 bg-primary mt-8'>
-                    <div className='relative flex flex-col items-center'>
+                    <div className={`relative flex flex-col ${statusClass(0)}`}>
                         <Image objectFit='contain' src="/images/paid.png" alt='' width={40} height={40} priority />
                         <span>Payment</span>
                     </div>
-                    <div className='relative flex flex-col items-center'>
+                    <div className={`relative flex flex-col ${statusClass(1)}`}>
                         <Image objectFit='contain' src="/images/bake.png" alt='' width={40} height={40} priority />
                         <span>Preparing</span>
                     </div>
-                    <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/bike.png" alt='' width={40} height={40} priority/>
+                    <div className={`relative flex flex-col ${statusClass(2)}`}>
+                        <Image objectFit='contain' src="/images/bike.png" alt='' width={40} height={40} priority />
                         <span>On the way</span>
                     </div>
-                    <div className='relative flex flex-col items-center'>
-                        <Image objectFit='contain' src="/images/delivered.png" alt='' width={40} height={40} priority/>
+                    <div className={`relative flex flex-col ${statusClass(3)}`}>
+                        <Image objectFit='contain' src="/images/delivered.png" alt='' width={40} height={40} priority />
                         <span>Delivered</span>
                     </div>
                 </div>
