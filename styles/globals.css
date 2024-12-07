@@ -23,8 +23,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.btn-primary {
+/* .btn-primary {
   @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+} */
+
+.btn-primary {
+  @apply text-secondary z-10 px-[30px] py-[8px] rounded-3xl  cursor-pointer  transition-all disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .slick-dots {
@@ -39,4 +43,176 @@ body {
 
 .slick-dots div {
   @apply !mt-8 !mx-3 lg:!mx-0;
+}
+
+
+/*! hover link and button */
+.link {
+  background: linear-gradient(#ffbe33, #ffbe33) repeat-x #fff;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto;
+  background-size: 200% 100%;
+  background-position-x: 0;
+  background-position-y: 2em;
+  transition: background-position-y 0.5s ease;
+  animation: waveAnimation 4s infinite linear;
+  animation-play-state: running;
+  animation-play-state: paused;
+}
+
+.link:hover {
+  background-position-x: 0;
+  background-position-y: 0;
+  animation-play-state: running;
+}
+
+@keyframes waveAnimation {
+  from {
+    background-position-x: 0%;
+  }
+
+  to {
+    background-position-x: 200%;
+  }
+}
+
+
+
+.btn-5 {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-5:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+}
+
+.perfect-card {
+  background: linear-gradient(#C19E68, #C19E68) repeat-x #1E1E1E;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: auto;
+  background-size: 200% 100%;
+  background-position-x: 0;
+  background-position-y: 200px;
+  transition: background-position-y 1s ease;
+  animation: waveAnimation6 4s infinite linear;
+  animation-play-state: running;
+  animation-play-state: paused;
+}
+
+.perfect-card:hover {
+  background-position-x: 0;
+  background-position-y: 0;
+  animation-play-state: running;
+}
+
+@keyframes waveAnimation6 {
+  from {
+    background-position-x: 0%;
+  }
+
+  to {
+    background-position-x: 200%;
+  }
+}
+
+
+
+
+
+
+
+
+
+.btn-three {
+  color: #222831;
+  transition: all 0.5s;
+  position: relative;
+}
+.btn-three::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #ffbe33;
+  transition: all 0.3s;
+}
+.btn-three:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.btn-three::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid #ffbe33;
+  transform: scale(1.2,1.2);
+}
+.btn-three:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
+
+
+
+.link-two::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  background-color: #ffbe33;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+.link-two:hover::after{
+  content: '';
+  width: 100%;
+}
+
+/* .link-two::before{
+  content: '';
+  position: absolute;
+  width: 0;
+  background-color: #ffbe33;
+  height: 1px;
+  top: 0;
+  right: 0;
+  transition: 0.5s;
+}
+
+.link-two:hover::before{
+  content: '';
+  width: 100%;
+} */
+
+
+
+
+
+
+/*! Transition */
+.productTransition{
+  transition: 0.6s;
 }

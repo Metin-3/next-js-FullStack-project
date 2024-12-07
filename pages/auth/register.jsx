@@ -91,7 +91,7 @@ const Register = () => {
                     ))}
                 </div>
                 <div className='flex flex-col w-full gap-y-3 mt-6'>
-                    <button className="btn-primary font-bold" type='submit'>Register</button>
+                    <button className="btn-three btn-primary font-bold" type='submit'>Register</button>
                     <Link href="/auth/login">
                         <span className='text-[14px] underline cursor-pointer text-secondary'>Do you have a account ?</span>
                     </Link>

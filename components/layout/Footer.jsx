@@ -25,15 +25,15 @@ const Footer = () => {
           <div className="md:flex-1">
             <Title addClass="text-[30px]">Contact Us</Title>
             <div className="flex flex-col gap-y-2 mt-3">
-              <a href={footer?.location} target='_blank' rel='noreferrer'>
+              <a href={footer?.location} target='_blank' rel='noreferrer' className='hover:text-primary productTransition'>
                 <i className="fa-solid fa-location-dot"></i>
                 <span className="inline-block ml-2">Location</span>
               </a>
-              <a href={`tel:${footer?.phoneNumber}`}  rel='noreferrer'>
+              <a href={`tel:${footer?.phoneNumber}`}  rel='noreferrer' className='hover:text-primary productTransition'>
                 <i className="fa-solid fa-phone"></i>
                 <span className="inline-block ml-2">Call {footer?.phoneNumber}</span>
               </a>
-              <a href={`mailto:${footer?.email}`}  rel='noreferrer'>
+              <a href={`mailto:${footer?.email}`}  rel='noreferrer'  className='hover:text-primary productTransition'>
                 <i className="fa-solid fa-envelope"></i>
                 <span className="inline-block ml-2">{footer?.email}</span>
               </a>
@@ -49,7 +49,7 @@ const Footer = () => {
                   href={item?.link}
                   target='_blank'
                   rel='noreferrer'
-                  className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full "
+                  className="btn-5 w-8 h-8 grid place-content-center bg-white text-secondary rounded-full "
                 >
                   <i className={item?.icon}></i>
                 </a>

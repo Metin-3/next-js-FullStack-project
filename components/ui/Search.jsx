@@ -7,6 +7,8 @@ import axios from "axios";
 import Input from "../form/Input";
 import { useRouter } from "next/router";
 import PacmanLoader from "react-spinners/PacmanLoader";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Search = ({ setIsSearchModal }) => {
 
@@ -39,8 +41,16 @@ const Search = ({ setIsSearchModal }) => {
         setFiltered(searchFilter)
     }
 
+    useEffect(() => {
+        AOS.init({
+            once: false,
+            duration: 1000,
+            easing: "ease-out-cubic",
+        });
+    }, []);
+
     return (
-        <div className="fixed w-screen h-screen z-50 top-0 left-0 after:content-[''] after:w-screen after:h-screen after:absolute after:top-0 after:left-0 grid place-content-center after:bg-black after:opacity-60">
+        <div className="fixed w-screen h-screen z-50 top-0 left-0 after:content-[''] after:w-screen after:h-screen after:absolute after:top-0 after:left-0 grid place-content-center after:bg-black after:opacity-60" data-aos="zoom-in">
             <OutsideClickHandler onOutsideClick={() => setIsSearchModal(false)}>
                 <div className="w-full h-full grid place-content-center">
                     <div className="relative z-50 md:w-[600px] w-[370px] bg-white border-2 p-10 rounded-3xl">

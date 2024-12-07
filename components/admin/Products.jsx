@@ -43,8 +43,8 @@ const Products = () => {
         <div className="lg:p-8 flex-1 lg:mt-5 mt-0">
             <Title addClass="text-[40px]">Products</Title>
             <div className='overflow-x-auto w-full mt-5 !max-h-[400px] overflow-auto'>
-                <table className='w-full text-sm text-center text-gray-400 min-w-[1000px]'>
-                    <thead className='text-xs text-gray-400 uppercase bg-gray-700'>
+                <table className='w-full text-sm text-center text-gray-400 xl:min-w-[1000px]'>
+                    <thead className=' sticky top-0  text-xs text-gray-400 uppercase bg-black'>
                         <tr>
                             <th scope='col' className='py-3 px-6'>IMAGE</th>
                             <th scope='col' className='py-3 px-6'>ID</th>
@@ -55,21 +55,27 @@ const Products = () => {
                     </thead>
                     <tbody>
                         {products.length > 0 && products.map((product) => (
-                            <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={product._id}>
-                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center'>
-                                    <Image src={product.img} alt={product.title} width={50} height={50} />
+                            <tr className='bg-secondary border-gray-700 hover:text-black hover:bg-primary transition-all' key={product._id}>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap  flex items-center gap-x-1 justify-center'>
+                                    <Image
+                                        src={product.img}
+                                        alt={product.title || 'Product'}
+                                        width={50}
+                                        height={50}
+                                        priority
+                                    />
                                 </td>
-                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap '>
                                     {product._id.substring(0, 8)}...
                                 </td>
-                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                     {product.title}
                                 </td>
-                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                     {product.prices[0]} $
                                 </td>
-                                <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
-                                    <button className="btn-primary !bg-danger" onClick={() => handleDelete(product._id)}>DELETE</button>
+                                <td className='py-4 px-6 font-medium whitespace-nowrap'>
+                                    <button className="!text-white btn-primary !bg-danger" onClick={() => handleDelete(product._id)}>DELETE</button>
                                 </td>
                             </tr>
                         ))}

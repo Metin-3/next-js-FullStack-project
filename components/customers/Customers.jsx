@@ -8,7 +8,7 @@ const Customers = () => {
 
     function NextBtn({ onClick }) {
         return <button
-            className='bg-primary absolute -bottom-12 left-1/2 flex justify-center items-center w-10 h-10 rounded-full text-white'
+            className='link bg-primary border border-primary absolute -bottom-12 left-1/2 flex justify-center items-center w-10 h-10 rounded-full '
             onClick={onClick}>
             <IoIosArrowForward />
         </button>
@@ -16,7 +16,7 @@ const Customers = () => {
 
     function PrevBtn({ onClick }) {
         return <button
-            className='bg-primary absolute -bottom-12 right-1/2 flex justify-center items-center w-10 h-10 rounded-full text-white mr-2'
+            className='link bg-primary border border-primary absolute -bottom-12 right-1/2 flex justify-center items-center w-10 h-10 rounded-full mr-2'
             onClick={onClick}
         ><IoIosArrowBack />
         </button>
@@ -44,7 +44,7 @@ const Customers = () => {
     };
 
     return (
-        <div className='container mx-auto mt-12 mb-20'>
+        <div className='container mx-auto mt-12 mb-20 overflow-hidden'>
             <Title addClass="text-[40px] text-center">What Says Our Customers</Title>
             <Slider {...settings}>
                 <CustomerItem imgSrc="/images/download.jpg" />

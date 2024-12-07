@@ -37,23 +37,23 @@ const Profile = () => {
           <b className='text-2xl  mt-1'>Admin</b>
         </div>
         <ul className=''>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 0 && "bg-primary text-white"}`} onClick={() => setTabs(0)}>
+          <li className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 0 && "bg-primary text-white"}`} onClick={() => setTabs(0)}>
             <i className="fa-solid fa-burger"></i>
             <button className='ml-2'>Products</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 1 && "bg-primary text-white"}`} onClick={() => setTabs(1)}>
+          <li className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 1 && "bg-primary text-white"}`} onClick={() => setTabs(1)}>
             <i className="fa-solid fa-file-invoice"></i>
             <button className='ml-2'>Orders</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 2 && "bg-primary text-white"}`} onClick={() => setTabs(2)}>
+          <li className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 2 && "bg-primary text-white"}`} onClick={() => setTabs(2)}>
             <i className="fa-solid fa-table-list"></i>
             <button className='ml-2'>Categories</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 3 && "bg-primary text-white"}`} onClick={() => setTabs(3)}>
+          <li className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${tabs === 3 && "bg-primary text-white"}`} onClick={() => setTabs(3)}>
             <i className="fa-solid fa-window-maximize"></i>
             <button className='ml-2'>Footer</button>
           </li>
-          <li className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all`} onClick={closeAdminAccount}>
+          <li className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all`} onClick={closeAdminAccount}>
             <i className="fa-solid fa-right-to-bracket"></i>
             <button className='ml-2'>Exit</button>
           </li>
@@ -66,7 +66,12 @@ const Profile = () => {
       {isProductModal && (
         <AddProduct setIsProductModal={setIsProductModal} />
       )}
-      <button className='btn-primary !w-12 !h-12 bottom-14 right-10 fixed !p-0 text-4xl' onClick={() => setIsProductModal(true)}>+</button>
+      <button 
+      className='bg-primary hover:opacity-90 btn-primary !w-12 !h-12 bottom-14 right-10 fixed !p-0 text-4xl' 
+      onClick={() => setIsProductModal(true)}
+      >
+        +
+      </button>
     </div>
   )
 }

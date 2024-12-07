@@ -158,7 +158,7 @@ const Footer = () => {
                         onChange={(e) => setIconName(e.target.value)}
                         value={iconName}
                     />
-                    <button className="btn-primary" type="submit" onClick={handleCreate} >
+                    <button className="btn-three btn-primary" type="submit" onClick={handleCreate} >
                         Add
                     </button>
                 </div>
@@ -179,7 +179,7 @@ const Footer = () => {
                     ))}
                 </ul>
             </div>
-            <button className="btn-primary mt-4" type="submit">Update</button>
+            <button className="btn-three btn-primary mt-4" type="submit">Update</button>
         </form>
     );
 };

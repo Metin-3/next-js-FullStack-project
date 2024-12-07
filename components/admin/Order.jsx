@@ -39,9 +39,9 @@ const Order = () => {
     return (
         <div className="lg:p-8 flex-1 lg:mt-5 mt-0">
             <Title addClass="text-[40px]">Order</Title>
-            <div className='overflow-x-auto w-full mt-5'>
-                <table className='w-full text-sm text-center text-gray-400 min-w-[1000px]'>
-                    <thead className='text-xs text-gray-400 uppercase bg-gray-700'>
+            <div className='overflow-x-auto w-full mt-5 !max-h-[400px] overflow-auto'>
+                <table className='w-full text-sm text-center text-gray-400  xl:min-w-[1000px] min-w-[100%]'>
+                    <thead className='sticky z-10 top-0  text-xs text-gray-400 uppercase bg-black'>
                         <tr>
                             <th scope='col' className='py-3 px-6'>PRODUCT ID</th>
                             <th scope='col' className='py-3 px-6'>CUSTOMER</th>
@@ -55,23 +55,23 @@ const Order = () => {
                         {orders.length > 0 && orders
                             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                             .map((order) => (
-                                <tr className='bg-secondary border-gray-700 hover:bg-primary transition-all' key={order?._id}>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white  gap-x-1'>
+                                <tr className='bg-secondary hover:text-black border-gray-700 hover:bg-primary transition-all' key={order?._id}>
+                                    <td className='py-4 px-6  font-medium whitespace-nowrap  gap-x-1'>
                                         {order?._id.substring(0, 10)}
                                     </td>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                         {order?.customer}
                                     </td>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                         {order?.total} $
                                     </td>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                         {order?.method === 0 ? "Cash" : "Card"}
                                     </td>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                         {status[order?.status]}
                                     </td>
-                                    <td className='py-4 px-6 font-medium whitespace-nowrap hover:text-white'>
+                                    <td className='py-4 px-6 font-medium whitespace-nowrap'>
                                         <button
                                             className="btn-primary !bg-success"
                                             onClick={() => handleStatus(order?._id)}

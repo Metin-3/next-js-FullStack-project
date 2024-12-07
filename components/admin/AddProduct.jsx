@@ -102,7 +102,7 @@ const AddProduct = ({ setIsProductModal }) => {
                                     onChange={handleOnChange}
                                     className="hidden"
                                 />
-                                <button className="btn-primary !rounded-none !bg-blue-600 pointer-events-none">
+                                <button className="!text-white btn-primary !rounded-none !bg-blue-600 pointer-events-none">
                                     Choose an image
                                 </button>
                                 {imageSrc && (

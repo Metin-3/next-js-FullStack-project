@@ -84,8 +84,8 @@ const Login = () => {
                     ))}
                 </div>
                 <div className='flex flex-col w-full gap-y-3 mt-6'>
-                    <button className="btn-primary font-bold" type="submit">Login</button>
-                    <button className="btn-primary !bg-secondary font-bold" type='button' onClick={() => signIn("github")}>
+                    <button className=" btn-three btn-primary font-bold" type="submit">Login</button>
+                    <button className="btn-5 !rounded-none btn-primary !text-white !bg-secondary font-bold" type='button' onClick={() => signIn("github")}>
                         <i className="fa-brands fa-github"></i>  GitHub
                     </button>
                     <Link href="/auth/register">

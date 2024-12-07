@@ -70,7 +70,7 @@ const Index = () => {
                     ))}
                 </div>
                 <div className='flex flex-col w-full gap-y-3 mt-6'>
-                    <button className="btn-primary font-bold">Login</button>
+                    <button className="btn-three btn-primary font-bold">Login</button>
                     <Link href="/">
                         <span className='text-[14px] underline cursor-pointer text-secondary'>Home Page</span>
                     </Link>

@@ -13,8 +13,8 @@ const index = ({ food }) => {
     const [size, setSize] = useState(0);
     const [extraItems, setExtraItems] = useState(food?.extraOptions);
     const [extras, setExtras] = useState([]);
-
     const cart = useSelector((state) => state.cart);
+    const findCart = cart.products.find((item) => item._id === food._id);
 
     const dispathc = useDispatch()
 
@@ -86,7 +86,12 @@ const index = ({ food }) => {
                     ))}
 
                 </div>
-                <button className='btn-primary mt-6' onClick={handleClick}>Add To Card</button>
+                <button
+                    className='btn-three btn-primary mt-6'
+                    onClick={handleClick}
+                    disabled={findCart}
+                >Add To Card
+                </button>
             </div>
         </div>
     )

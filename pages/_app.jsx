@@ -18,14 +18,27 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.remove());
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
+
+  useEffect(() => {
+    AOS.init({
+      once: false,
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
         <Layout>
-          <ToastContainer />
-          <Component {...pageProps} />
+          <div className="pt-[88px]">
+            <ToastContainer />
+            <Component {...pageProps} />
+          </div>
         </Layout>
       </Provider>
     </SessionProvider>

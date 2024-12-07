@@ -99,7 +99,7 @@ const Acount = ({ user }) => {
                         onBlur={handleBlur}
                     />
                 ))}
-                <button className='btn-primary mt-4' type='submit'>Update</button>
+                <button className='btn-three btn-primary mt-4' type='submit'>Update</button>
             </div>
         </form>
     )

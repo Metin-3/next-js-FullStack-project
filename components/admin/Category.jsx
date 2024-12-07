@@ -56,7 +56,7 @@ const Category = () => {
                         value={inputTex}
                     />
                     <button
-                        className="btn-primary font-bold !text-secondary"
+                        className="btn-three !py-4 btn-primary font-bold !text-secondary"
                         onClick={handleCreate}
                     >Add</button>
                 </div>
@@ -64,7 +64,7 @@ const Category = () => {
                     {categories.map((category) => (
                         <div className='flex justify-between mt-4' key={category._id}>
                             <b className='text-xl'>{category.title}</b>
-                            <button className="btn-primary !bg-danger" onClick={() => handleDelete(category._id)}>Delete</button>
+                            <button className="!text-white btn-primary !bg-danger" onClick={() => handleDelete(category._id)}>Delete</button>
                         </div>
                     ))}
                 </div>
