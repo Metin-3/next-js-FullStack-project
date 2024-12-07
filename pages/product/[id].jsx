@@ -6,7 +6,7 @@ import { addProduct } from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-const index = ({ food }) => {
+const Index = ({ food }) => {
 
     const [prices, setPrices] = useState(food.prices);
     const [price, setPrice] = useState(prices[0]);
@@ -108,4 +108,4 @@ export const getServerSideProps = async ({ params }) => {
     };
 };
 
-export default index
+export default Index

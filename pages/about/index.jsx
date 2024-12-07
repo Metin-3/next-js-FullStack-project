@@ -2,7 +2,7 @@ import React from 'react';
 import About from '../../components/About';
 
 
-const index = () => {
+const Index = () => {
     return (
         <div>
             <About />
@@ -10,4 +10,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index
