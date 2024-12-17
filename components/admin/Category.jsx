@@ -12,7 +12,7 @@ const Category = () => {
     useEffect(() => {
         const getCategories = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
                 setCategories(res?.data);
             } catch (error) {
                 console.log(error)
@@ -24,7 +24,7 @@ const Category = () => {
 
     const handleCreate = async () => {
         try {
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/categories`, { title: inputTex });
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, { title: inputTex });
             setCategories([...categories, res.data]);
             setInputTex("");
             toast.success("Create category successfully");
@@ -37,7 +37,7 @@ const Category = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/categories/${id}`);
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/${id}`);
             setCategories(categories.filter((cat) => cat._id !== id));
             toast.success("Delete category successfully")
         } catch (error) {

@@ -20,7 +20,7 @@ const Search = ({ setIsSearchModal }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
                 setProducts(res.data);
                 setFiltered(res.data.slice(0, 5));
             } catch (error) {

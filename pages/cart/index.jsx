@@ -26,7 +26,7 @@ const Cart = ({ userList }) => {
         try {
             if (session) {
                 if (confirm("Are you sure to order ?")) {
-                    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/orders`, newOrder);
+                    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, newOrder);
                     if (res.status === 201) {
                         router.push(`/order/${res.data._id}`);
                         dispatch(reset());
@@ -112,7 +112,7 @@ const Cart = ({ userList }) => {
 };
 
 export const getServerSideProps = async () => {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/users`);
 
     return {
         props: {

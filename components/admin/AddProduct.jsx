@@ -23,7 +23,7 @@ const AddProduct = ({ setIsProductModal }) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
                 setCategories(res.data);
             } catch (error) {
                 console.log(error);
@@ -78,7 +78,7 @@ const AddProduct = ({ setIsProductModal }) => {
                 extraOptions,
             }
 
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/products`, newProduct);
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, newProduct);
 
             if (res.status === 201) {
                 setIsProductModal(false);

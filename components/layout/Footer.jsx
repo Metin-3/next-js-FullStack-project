@@ -9,7 +9,7 @@ const Footer = () => {
   useEffect(() => {
     const getFooter = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/footer`);
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`);
         setFooter(res.data[0]);
       } catch (error) {
         console.log(error);

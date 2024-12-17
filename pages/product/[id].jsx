@@ -99,7 +99,7 @@ const Index = ({ food }) => {
 
 export const getServerSideProps = async ({ params }) => {
     const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/products/${params.id}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/products/${params.id}`
     );
     return {
         props: {

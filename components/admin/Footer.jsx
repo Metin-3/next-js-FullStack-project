@@ -18,7 +18,7 @@ const Footer = () => {
     useEffect(() => {
         const getFooterData = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/footer`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/footer`);
                 setFooterData(res.data[0]);
                 setSocialMediaLinks(res.data[0].socialMedia);
             } catch (error) {
@@ -31,7 +31,7 @@ const Footer = () => {
 
     const onSubmit = async (values, actions) => {
         try {
-            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/footer/${footerData._id}`,
+            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/footer/${footerData._id}`,
                 {
                     location: values.location,
                     email: values.email,

@@ -11,7 +11,7 @@ const Order = () => {
     useEffect(() => {
         const getOrders = async () => {
             try {
-                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/orders`);
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`);
                 setOrders(res.data);
             } catch (error) {
                 console.log(error);
@@ -25,7 +25,7 @@ const Order = () => {
         const currentStatus = item.status;
 
         try {
-            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/orders/${id}`,
+            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${id}`,
                 {
                     status: currentStatus + 1,
                 }

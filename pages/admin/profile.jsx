@@ -18,7 +18,7 @@ const Profile = () => {
   const closeAdminAccount = async () => {
     try {
       if (confirm("Are you sure you want to close your Admin Account ?")) {
-        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
+        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/admin`);
         if (res.status === 200) {
           push("/admin");
           toast.success("Admin account closed");

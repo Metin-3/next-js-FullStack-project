@@ -19,8 +19,8 @@ export default function Index({categoryList, productList}) {
 };
 
 export const getServerSideProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
-  const product = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
+  const product = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
   return {
     props:{
       categoryList: res.data ? res.data : [],

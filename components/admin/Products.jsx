@@ -11,7 +11,7 @@ const Products = () => {
     const handleDelete = async (id) => {
         try {
             if (confirm("Are you sure you want to delete this product ?")) {
-                const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`);
+                const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`);
 
                 if (res.status === 200) {
                     toast.success("Product Deleted !");
@@ -26,7 +26,7 @@ const Products = () => {
 
     const getProducts = async () => {
         try {
-            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
             setProducts(res.data);
         } catch (error) {
             console.log(error)

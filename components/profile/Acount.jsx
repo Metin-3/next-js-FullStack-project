@@ -10,7 +10,7 @@ const Acount = ({ user }) => {
 
     const onSubmit = async (values, actions) => {
         try {
-            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`, values)
+            const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`, values)
             toast.success("Profile update successfully")
         } catch (err) {
             console.log(err)
